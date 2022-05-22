@@ -1,0 +1,60 @@
+<div class="wrapper"> 
+    <div class="image-holder"  >
+        <img src="assets/img/admin.png" alt="" width="300" height="300"> 
+    </div>
+    <form  [formGroup]="addadminForm" style="margin-right: 200px;"  >
+        <div id="wizar"  >
+            <!-- SECTION 1 -->
+            <div >
+            <h2 class="add">Ajouter Administrateur </h2>
+            </div><br>
+            <section>
+                <div class="form " >
+                
+                    <div class="input-container">
+                        <i class="fa fa-user icon"></i>
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="nom " required  formControlName="nom"  [ngClass]="{ 'is-invalid': submitted && f.nom.errors }"> 
+                        <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                            <div *ngIf="f.nom.errors.required" style="color: rgb(32, 124, 124);">Nom est Obligatoire</div>
+                        </div>  
+                    </div><br>
+                    <div class="input-container">
+                        <i class="fa fa-user icon"></i>
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="Prénom " required  formControlName="prenom"  [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }">
+                        <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                            <div *ngIf="f.prenom.errors.required"  style="color: rgb(32, 124, 124);"   >Prenom est Obligatoire</div>
+                        </div>
+                    </div><br>
+                    <div class="input-container">
+                        <i class="fa fa-envelope icon"></i>
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="Email " required  formControlName="email"  [ngClass]="{ 'is-invalid': submitted && f.email.errors }"> 
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required"  style="color: rgb(32, 124, 124);"    >Email est Obligatoire</div>
+                        </div>  
+                    </div><br>
+                    
+                    
+                
+                    <div class="form-row">
+                        <div class="input-container" >
+                            <i class="fa fa-key icon"></i>
+                            <input id="password" type="password" class="form-control" placeholder="mot de passe" required  formControlName="mdp"  [ngClass]="{ 'is-invalid': submitted && f.mdp.errors }" >
+                            <div *ngIf="submitted && f.mdp.errors" class="invalid-feedback"     >
+                                <div *ngIf="f.mdp.errors.required"  style="color: rgb(74, 182, 182);"  >Mot de passe est obligatoire</div>
+                            </div>
+                        </div>
+                    </div>
+                 
+               
+                  <div  class="col-12" >
+                    <button type="submit" class="btn  btn-primary"  (click)="addadmin(addadminForm.value)">Ajouter administrateur</button>
+                  </div>
+
+                 
+
+                </div>  
+               
+               
+            </section>
+            
+

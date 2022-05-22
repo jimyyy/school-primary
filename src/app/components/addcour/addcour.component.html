@@ -1,0 +1,80 @@
+<div class="registration-form">
+    <form [formGroup]="courForm">
+        <div class="form-icon">
+            <img src="assets/img/cour.png">
+        </div>
+
+
+        <div class="form-group">
+
+            <select class="form-select" id="validationCustom04" placeholder=" choisir nom Module *"
+            formControlName="idModule" [ngClass]="{ 'is-invalid': submitted && f.idModule.errors }"  (change)="onSelect($event)">
+                <option>...Select...</option>
+                <option *ngFor="let s of subjects" value="{{s._id}}">{{s.nomModule}}</option>
+
+            </select>
+            <div *ngIf="submitted && f.idModule.errors" class="invalid-feedback">
+                <div *ngIf="f.idModule.errors.required" style="color: rgb(32, 124, 124);">Nom de Module est Obligatoire</div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="form-group">
+            <select class="form-select" id="validationCustom04" placeholder="Nom Matiere *"
+            formControlName="idMatiere" [ngClass]="{ 'is-invalid': submitted && f.idMatiere.errors }">
+                <option>....Select...</option>
+                <option *ngFor="let m of matiere" value="{{m._id}}">{{m.nomMatiere}}</option>
+
+            </select>
+            <div *ngIf="submitted && f.idMatiere.errors" class="invalid-feedback">
+                <div *ngIf="f.idMatiere.errors.required" style="color: rgb(32, 124, 124);">Nom de Matiere est Obligatoire</div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <input type="file" #filePicker (change)='onImageSelected($event)' class="form-control " id="description"
+                placeholder=" liencours "  [ngClass]="{ 'is-invalid': submitted && f.img.errors }">
+                <div *ngIf="submitted && f.img.errors" class="invalid-feedback">
+                    <div *ngIf="f.img.errors.required" style="color: rgb(32, 124, 124);">Nom de Matiere est Obligatoire</div>
+                </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-12">
+                <label for="validationCustom04" class="form-label" >Quelle niveau le cours est concerné *</label>
+                <select class="form-select"  required formControlName="niveau"  [ngClass]="{ 'is-invalid': submitted && f.niveau.errors }" >
+                    <option  selected="true">...</option>
+                    <option value="1er" >1er anneé</option>
+                    <option value="2eme"  >2eme année</option>
+                    <option value="3eme" >3eme année</option>
+                    <option value="4eme"  >4eme année</option>
+                    <option value="5eme">5eme année</option>
+                    <option value="6eme"  >6eme année</option>
+                    
+                </select>
+                <div *ngIf="submitted && f.niveau.errors" class="invalid-feedback">
+                    <div *ngIf="f.niveau.errors.required" >niveau est Obligatoire</div>
+                    
+                </div> 
+               
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-block create-account" (click)="Addcour(courForm.value)">Ajouter Cours</button>
+        </div>
+    </form>
+
+</div>

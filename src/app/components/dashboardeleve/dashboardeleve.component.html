@@ -1,0 +1,129 @@
+<mat-toolbar>
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened">
+            menu
+        </mat-icon>
+        <mat-icon *ngIf="sidenav.opened">
+            close
+        </mat-icon>
+    </button>
+
+    Dashboard Eléve
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z10">
+
+
+
+        <button mat-button class="menu-button" routerLink="">
+            <mat-icon>home</mat-icon>
+            <span>Acceuil</span>
+        </button>
+
+
+
+
+
+        <mat-divider></mat-divider>
+        <button mat-button class="menu-button" [routerLink]="['profileleve/:id']">
+            <mat-icon>account_box</mat-icon>
+            <span>My Profile</span>
+        </button>
+        <mat-divider></mat-divider>
+
+
+
+
+
+        <button mat-button class="menu-button" [matMenuTriggerFor]="menu">
+            <mat-icon>menu</mat-icon>
+            <span>Gestion de Paiement</span>
+
+
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="maquittance"> Ma quittance de paiement</button>
+
+
+            </mat-menu>
+
+
+
+
+        </button>
+
+
+
+
+        <mat-divider></mat-divider>
+        <button mat-button class="menu-button" routerLink="mesab">
+            <mat-icon> local_hotel</mat-icon>
+            <span>Mes Absences</span>
+        </button>
+        <mat-divider></mat-divider>
+
+        <button mat-button class="menu-button" routerLink="mesnotes">
+            <mat-icon> local_hotel</mat-icon>
+            <span>Mes Notes</span>
+        </button>
+        <mat-divider></mat-divider>
+
+
+        <button mat-button class="menu-button" routerLink="mesco">
+            <mat-icon>person</mat-icon>
+            <span>Mes cours</span>
+
+        </button>
+        <mat-divider></mat-divider>
+
+
+        <button mat-button class="menu-button" routerLink="calender">
+            <mat-icon> border_color</mat-icon>
+            <span>Mon emploi de temps</span>
+        </button>
+
+
+
+
+
+
+        <mat-divider></mat-divider>
+        <button mat-button class="menu-button">
+            <mat-icon>print</mat-icon>
+            <span>mon bultin</span>
+
+        </button>
+
+        <mat-divider></mat-divider>
+        <button mat-button class="menu-button" routerLink="demandeonline">
+            <mat-icon>print</mat-icon>
+            <span>demande cours en ligne</span>
+
+        </button>
+
+
+
+
+
+
+        <mat-divider></mat-divider>
+        <button mat-button class="menu-button" (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Déconnexion</span>
+
+        </button>
+
+        <mat-divider></mat-divider>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content mat-elevation-z8">
+            <main>
+                <router-outlet></router-outlet>
+
+            </main>
+
+
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

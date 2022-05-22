@@ -1,0 +1,171 @@
+<div class="content">
+
+    <div class="container">
+        <h2 class="mb-5">Note des eléves </h2>
+
+        <div class="table-responsive">
+            <form [formGroup]="addForm">
+
+
+
+                <select class="form-select" placeholder="Choisir Groupe" formControlName="idGroupe"
+                    (change)="onSelect($event.target.value)" [ngClass]="{ 'is-invalid': submitted && f.idGroupe.errors }">
+                    <option>...</option>
+                    <option *ngFor="let g of groups" [value]="g._id">
+                        {{g.nomgroupe}} </option>
+
+
+                </select>
+                <div *ngIf="submitted && f.idGroupe.errors" class="invalid-feedback">
+                    <div *ngIf="f.idGroupe.errors.required">groupe est Obligatoire</div>
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <table class="table table-striped custom-table">
+                    <thead>
+                        <tr>
+
+
+                            <th scope="col">Nom et Prénom Eleve</th>
+                            <th scope="col">Module </th>
+                            <th scope="col">Matiére </th>
+                            <th scope="col">Note Eleve </th>
+
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        <tr *ngFor="let a of grp">
+                            <ng-container *ngIf="a.type === 'studentbyadmin'">
+                                <td class="pl-0">
+                                    <input class="form-control" id="inputLast" type="text"
+                                        placeholder="{{ a.prenom }} {{ a.nom }}" disabled="true" />
+                                </td>
+
+
+
+
+
+
+
+
+                                <td class="pl-0">
+                                    <select class="form-select" formControlName="idModule" placeholder="Choisir Module"
+                                        (change)="onSelect1($event.target.value)"
+                                        [ngClass]="{ 'is-invalid': submitted && f.idModule.errors }">
+                                        <option>
+                                            ...Select...
+                                        </option>
+                                        <option *ngFor="let t of subjects" [value]="t._id">
+                                            {{ t.nomModule }} </option>
+
+
+                                    </select>
+                                    <div *ngIf="submitted && f.idModule.errors" class="invalid-feedback">
+                                        <div *ngIf="f.idModule.errors.required">groupe est Obligatoire</div>
+
+                                    </div>
+
+                                </td>
+
+                                <td class="pl-0">
+
+
+                                    <select class="form-select" formControlName="idMatiere"
+                                        placeholder="Choisir Matiere"
+                                        [ngClass]="{ 'is-invalid': submitted && f.idMatiere.errors }">
+                                        <option>...Select...</option>
+                                        <option *ngFor="let m of matiere" [value]="m._id">
+                                            {{ m.nomMatiere }} </option>
+
+
+                                    </select>
+                                    <div *ngIf="submitted && f.idMatiere.errors" class="invalid-feedback">
+                                        <div *ngIf="f.idMatiere.errors.required">groupe est Obligatoire</div>
+
+                                    </div>
+
+
+
+
+                                </td>
+
+
+
+
+
+
+                                <td>
+
+                                    <div class="col-md-6">
+
+                                        <input class="form-control" id="inputLastName" type="text"
+                                            placeholder="Enter Note examen" formControlName="note"
+                                            [ngClass]="{ 'is-invalid': submitted && f.note.errors }">
+                                        <div *ngIf="submitted && f.note.errors" class="invalid-feedback">
+                                            <div *ngIf="f.note.errors.required">note est Obligatoire</div>
+
+                                        </div>
+                                    </div>
+                                </td>
+
+
+
+                                <td>
+
+
+
+
+
+
+
+                                    <button mat-fab color="second" aria-label="Example icon button with a delete icon"
+                                        (click)="add(addForm.value, a._id)">
+                                        <mat-icon>check_circle</mat-icon>
+                                    </button>
+
+
+
+
+
+
+
+                                </td>
+
+                            </ng-container>
+
+
+                        </tr>
+
+
+
+
+
+                    </tbody>
+                </table>
+            </form>
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+</div>

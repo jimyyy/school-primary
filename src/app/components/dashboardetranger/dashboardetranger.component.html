@@ -1,0 +1,86 @@
+
+<mat-toolbar>
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened">
+            menu
+        </mat-icon>
+        <mat-icon *ngIf="sidenav.opened">
+            close
+        </mat-icon>
+    </button>
+
+    Dashboard étrangér
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z10">
+      
+
+        
+        <button mat-button class="menu-button" routerLink="">
+            <mat-icon>home</mat-icon>
+            <span>Acceuil</span>
+        </button>
+
+
+
+
+
+        <mat-divider></mat-divider>
+         <button mat-button class="menu-button"       [routerLink]="['profilens/:id']"   >
+            <mat-icon>account_box</mat-icon>
+            <span>Mon profil</span>
+        </button>
+        <mat-divider></mat-divider>
+
+
+        <button mat-button class="menu-button"  routerLink="join">
+            <mat-icon>library_add</mat-icon>
+            <span>demande de cours en ligne </span>
+            
+        </button>
+        <mat-divider></mat-divider>
+
+
+       
+
+        <button mat-button class="menu-button"  routerLink="listetrangercourse">
+            <mat-icon>library_books</mat-icon>
+            <span>Mes cours en lignes </span>
+            
+        </button>
+        <mat-divider></mat-divider>
+
+
+        
+
+      
+       
+
+        
+  
+
+
+
+
+       
+        <button mat-button class="menu-button" (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Déconnexion</span>
+           
+        </button>
+        
+        <mat-divider></mat-divider>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content mat-elevation-z8">
+            <main>
+                <router-outlet></router-outlet>
+
+            </main>
+          
+            
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

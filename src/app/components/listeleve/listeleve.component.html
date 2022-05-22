@@ -1,0 +1,123 @@
+<div class="content">
+
+  <div class="container">
+    <h2 class="mb-5">Listes des Eleves confirmé</h2>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <input type="text" [(ngModel)]="searchText" placeholder="recherche">
+
+      </div>
+    </div>
+
+
+
+
+
+    <div class="table-responsive">
+      <form [formGroup]="groupForm">
+        <table class="table table-striped custom-table">
+          <thead>
+            <tr>
+
+
+
+              <th scope="col">Nom eleve</th>
+              <th scope="col">Prénom eleve</th>
+              <th scope="col">question de fraternité</th>
+              <th scope="col">niveau</th>
+              <th scope="col">Email</th>
+              <th scope="col">Groupe</th>
+              <th scope="col">Affectation</th>
+              <th scope="col">Action</th>
+
+            </tr>
+          </thead>
+          <tbody>
+
+
+            <tr *ngFor="let a of users | filter:searchText">
+              <ng-container *ngIf="a.type==='studentbyadmin'">
+
+                <td class="pl-0">{{a.nom}}</td>
+
+                <td>{{a.prenom}}</td>
+                <td>{{a.presence}}</td>
+                <td>{{a.niveau}}</td>
+
+                <td class="pl-0"><a href="mailto:{{a.email}}">{{a.email}}</a></td>
+                <td class="pl-0">
+                  <select class="form-select" id="validationCustom04" formControlName="idgroupe"
+                    placeholder="Choisir Groupe">
+                    <option>....</option>
+                    <option *ngFor="let g of groups" value="{{g._id}}"> {{g.nomgroupe}} </option>
+
+
+                  </select>
+
+
+
+
+
+
+
+
+
+
+
+
+                </td>
+                <ng-container *ngFor="let g of groups">
+                  <td *ngIf="a.idgroupe==g._id">{{g.nomgroupe}}</td>
+
+                </ng-container>
+
+
+
+                <td>
+                  <button mat-fab color="warn" aria-label="Example icon button with a delete icon"
+                    (click)="delete(a._id)" matTooltip="Supprimer">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                  <button mat-fab color="warn" aria-label="Example icon button with a delete icon" (click)="add(a._id)"
+                    matTooltip="payment">
+                    <mat-icon>paid</mat-icon>
+                  </button>
+                  <button mat-fab color="second" aria-label="Example icon button with a delete icon"
+                    (click)="addgroupe(groupForm.value,a)" matTooltip="Affecter groupe">
+                    <mat-icon>check_circle</mat-icon>
+                  </button>
+                  
+
+
+                </td>
+
+
+              </ng-container>
+
+
+
+
+
+
+
+            </tr>
+
+
+
+
+
+          </tbody>
+        </table>
+
+      </form>
+
+
+
+
+    </div>
+
+
+  </div>
+
+</div>

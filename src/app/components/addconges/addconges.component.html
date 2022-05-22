@@ -1,0 +1,91 @@
+<div class="counter"></div>
+
+<div>
+    <div class="inner">
+        <form [formGroup]="addcongesForm">
+
+            <div style="margin-left: 200px;">
+
+
+                <img src="assets/img/congee.jpg" alt="" width="100" height="100">
+                <br>
+
+
+            </div> <br>
+
+
+            <label class="form-group">
+                <input type="text" class="form-control" placeholder="Nom de l'enseignant " required="required"
+                    formControlName="nom" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }"  value="{{conges.nom}}">
+                <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                    <div *ngIf="f.nom.errors.required" style="color: rgb(32, 124, 124);">Nom est Obligatoire</div>
+                </div>
+
+
+                <span class="border"></span>
+            </label>
+            <label class="form-group">
+
+                <input type="text" class="form-control" placeholder="Prénom de l'enseignant " required="required"
+                    formControlName="prenom" [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" value="{{conges.prenom}}">
+                <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                    <div *ngIf="f.prenom.errors.required" style="color: rgb(32, 124, 124);">Prenom est Obligatoire</div>
+                </div>
+                <span class="border"></span>
+            </label>
+            <label class="form-group">
+                <input type="text" class="form-control" placeholder="Email " required="required" formControlName="email"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }"  value="{{conges.email}}">
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required" style="color: rgb(32, 124, 124);">Email est Obligatoire</div>
+                </div>
+                <span class="border"></span>
+            </label>
+            <label class="form-group">
+                <textarea name="" id="" class="form-control" placeholder="Justification " required="required"
+                    formControlName="message" [ngClass]="{ 'is-invalid': submitted && f.message.errors }"  value="{{conges.message}}"></textarea>
+                <div *ngIf="submitted && f.message.errors" class="invalid-feedback">
+                    <div *ngIf="f.message.errors.required" style="color: rgb(32, 124, 124);">Email est Obligatoire</div>
+                </div>
+                <span class="border"></span>
+            </label>
+            <label class="form-group">
+                Certification S'il existe:
+                <input type="file" class="form-control" #filePicker (change)='onImageSelected($event)'
+                    required="required">
+
+                <span class="border"></span>
+            </label>
+
+
+            <label class="form-group">
+                <input type="date" class="form-control" required="required" formControlName="datedebut"
+                    [ngClass]="{ 'is-invalid': submitted && f.datedebut.errors }"  value="{{conges.datedebut}}">
+                <div *ngIf="submitted && f.datedebut.errors" class="invalid-feedback">
+                    <div *ngIf="f.datedebut.errors.required" style="color: rgb(32, 124, 124);">Email est Obligatoire
+                    </div>
+                </div>
+                <span class="border"></span>
+            </label>
+            <label class="form-group">
+                <input type="date" class="form-control" required="required" formControlName="datefin"
+                    [ngClass]="{ 'is-invalid': submitted && f.datefin.errors }"  value="{{conges.datefin}}">
+                <div *ngIf="submitted && f.datefin.errors" class="invalid-feedback">
+                    <div *ngIf="f.datefin.errors.required" style="color: rgb(32, 124, 124);">Email est Obligatoire</div>
+                </div>
+                <span class="border"></span>
+            </label>
+
+
+
+            <div class="col-12" style="margin-left: 150px;">
+                <button type="submit" class="btn btn-lg btn-primary"
+                    (click)="Addconge(addcongesForm.value)">{{title}}</button>
+            </div>
+        </form>
+
+
+
+
+    </div>
+</div>

@@ -1,0 +1,112 @@
+<div class="content">
+
+    <div class="container">
+        <h2 class="mb-5">Gestion des reclamations </h2>
+
+        <div class="table-responsive">
+
+            <input type="text" class="ip" [(ngModel)]="searchText" placeholder="recherche"> <br>
+
+            <br>
+
+
+
+            <table class="table table-striped custom-table">
+                <thead>
+                    <tr>
+
+
+                        <th scope="col">Nom Eléve</th>
+
+
+                        <th scope="col">Matiere </th>
+                        <th scope="col">Note</th>
+
+                        <th scope="col">Reclamation</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <tr *ngFor="let b of reclamations     |filter:searchText">
+                        <ng-container *ngIf="b.type==='reclam note'">
+
+                            <ng-container *ngFor="let u of users">
+
+                                <td *ngIf="b.idEleve == u._id"> {{u.nom}} {{u.prenom}}</td>
+
+                            </ng-container>
+
+
+
+
+                            <ng-container *ngFor="let c of matieres">
+
+                                <td *ngIf="b.idMatiere == c._id"> {{c.nomMatiere}}</td>
+
+                            </ng-container>
+
+
+
+
+                            <ng-container *ngFor="let n of notes">
+
+                                <td *ngIf="b.idMatiere == n.idMatiere"> {{n.note}}</td>
+                            </ng-container>
+
+
+
+
+
+
+
+
+
+                            <td class="pl-0">
+                                {{b.reclamation}}
+                            </td>
+
+
+
+
+
+
+
+                            <td>
+
+
+
+
+                                <button mat-fab color="warn" aria-label="Example icon button with a delete icon"
+                                    (click)="deletenote(b._id)" matTooltip="Supprimer Reclamations">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+
+
+
+                            </td>
+
+
+                        </ng-container>
+
+
+
+
+
+
+
+                    </tr>
+
+
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+</div>

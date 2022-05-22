@@ -1,0 +1,102 @@
+<table class="table">
+    <thead>
+        <tr>
+
+            <th scope="col">nom et prenom</th>
+            <th scope="col">niveau</th>
+            
+
+
+
+
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            
+                <td>{{user.nom}} {{user.prenom}}</td>
+                <td>{{user.niveau}}</td>
+                
+
+
+
+
+            
+        </tr>
+
+    </tbody>
+</table><br>
+
+
+
+<div class="table-responsive">
+
+
+
+
+
+    <table class="table table-striped custom-table">
+      <thead>
+        <tr>
+
+          <th scope="col">Module </th>
+          <th scope="col">Matiere </th>
+          <th scope="col">Note</th>
+
+
+          
+        </tr>
+      </thead>
+      <tbody>
+
+
+        <tr *ngFor="let b of mynote">
+
+
+
+          
+
+          
+
+          <ng-container *ngFor="let q of subjects">
+
+            <td *ngIf="b.idModule == q._id"> {{q.nomModule}}</td>
+          </ng-container>
+
+          <ng-container *ngFor="let c of matieres">
+
+            <td *ngIf="b.idMatiere == c._id"> {{c.nomMatiere}}</td>
+          </ng-container>
+
+          <td class="pl-0">
+            {{b.note}}
+          </td>
+
+
+
+
+
+
+
+
+
+          
+
+
+
+
+        </tr>
+
+
+
+
+
+      </tbody>
+    </table>
+  
+
+
+</div>

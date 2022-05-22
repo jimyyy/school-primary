@@ -1,0 +1,191 @@
+<div class="container-fluid bg-primary py-5 mb-5 page-header">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <h1 class="display-3 text-white animated slideInDown">{{titre}}</h1>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class=container>
+    <div class="row">
+
+        <div class="col-lg-12 ">
+            <p class="fs-5">Nous vous remercions de l'intérêt que vous portez à notre Ecole .
+                Si vous souhaitez rejoindre notre équipe à la rentrée prochaine merci de bien vouloir prendre quelques
+                minutes afin de remplir le formulaire ci-dessous . aprés verification de votre cv nous allons envoyer un
+                email pour nous rejoindre a notre etablissement .pour plus d'information contacter
+                nous via email ou téléphone.
+
+
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="wrapperr" class="col-md-6 offset-3">
+
+    <form [formGroup]="preinsform">
+        <div id="wizardd">
+            <!-- SECTION 1 -->
+            <h4></h4>
+            <section>
+
+
+
+                <div class="form-row">
+                    <label for="validationCustom01" class="form-label">Nom enseignant *</label>
+                    <input type="text" class="form-control" id="validationCustom01" required formControlName="nom"  [ngClass]="{ 'is-invalid': submitted && f.nom.errors }"  >
+                    <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                        <div *ngIf="f.nom.errors.required" >Nom est Obligatoire</div>
+                        <div *ngIf="f.nom.errors.minlength">le nom min 2 caracateres</div>
+                    </div> 
+                       
+
+                </div>
+                
+
+
+
+                <div class="form-row">
+                    <label for="validationCustom02" class="form-label">Prénom enseignant *</label>
+                    <input type="text" class="form-control" id="validationCustom02" required formControlName="prenom"  [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" >
+                    <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                        <div *ngIf="f.prenom.errors.required">Prenom est Obligatoire</div>
+                        <div *ngIf="f.prenom.errors.minlength">le prenom  min 2 cara</div>
+                    </div> 
+                </div>
+
+
+
+                
+
+
+
+
+
+                <div class="form-row">
+                    <label for=""> Email enseignant </label>
+                    <div class="input-group has-validation">
+
+                        <input type="email" class="form-control" id="validationCustomUsername"
+                            aria-describedby="inputGroupPrepend" required formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" >
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">email est Obligatoire</div>
+                                <div *ngIf="f.email.errors.email">email doit etre confirmé</div>
+                            </div> 
+
+                    </div>
+
+
+
+
+                </div>
+                
+
+                <div class="form-row">
+                    <label for="">
+                        mot de passe *
+                    </label>
+                    <input type="password" class="form-control" required formControlName="mdp" [ngClass]="{ 'is-invalid': submitted && f.mdp.errors }"   >
+                    <div *ngIf="submitted && f.mdp.errors" class="invalid-feedback">
+                        <div *ngIf="f.mdp.errors.required">Mot de passe  est Obligatoire</div>
+                        <div *ngIf="f.mdp.errors.minlength">Mot de passe min 8 caracteres</div>
+                    </div> 
+
+
+
+
+                </div>
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="form-row">
+                    <label for="">
+                        tel *
+                    </label>
+                    <input type="text" class="form-control" required formControlName="tel" placeholder="1231231230" ng2TelInput (keypress)="numericOnly($event)" [ngClass]="{ 'is-invalid': submitted && f.tel.errors }" >
+                    <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
+                        <div *ngIf="f.tel.errors.required">tel est Obligatoire</div>
+                        <div *ngIf="f.tel.errors.minlength">tel doit etre egale a 8 chiffre</div>
+                    </div> 
+
+
+                    
+
+
+
+
+                </div>
+
+
+                <div class="form-row">
+                    <label for="">
+                        Cin enseignant*
+                    </label>
+                    <input type="text" class="form-control" required formControlName="cin" [ngClass]="{ 'is-invalid': submitted && f.cin.errors }"  >
+                    <div *ngIf="submitted && f.cin.errors" class="invalid-feedback">
+                        <div *ngIf="f.cin.errors.required">cin est Obligatoire</div>
+                        <div *ngIf="f.cin.errors.pattern">le cin est egale a 8 chiffre</div>
+                    </div> 
+
+
+
+                   
+
+                </div>
+
+
+
+
+
+
+
+
+                <div class="form-row">
+                    <label for="">
+                        Télecharger votre CV *
+                    </label>
+                    <input type="file" #filePicker (change)='onImageSelected2($event)' class="form-control"
+                        name="img2" required>
+                </div>
+
+
+
+
+
+            </section>
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit" (click)="preins(preinsform.value)">Valider</button>
+            </div>
+
+
+
+
+
+        </div>
+
+
+    </form>
+
+
+
+
+</div>

@@ -1,0 +1,78 @@
+<div class="content" id="table">
+    
+  <div class="container">
+    <h2 class="mb-5">Listes des enseignant confirmé</h2>
+    
+      <div class="row">
+        <div class="col-lg-6">
+          <input type="text"  [(ngModel)]="searchText"  placeholder="recherche">
+
+        </div>
+      </div>
+
+    
+
+    
+
+    <div class="table-responsive">
+
+      
+
+      <table class="table table-striped custom-table" >
+        <thead>
+          <tr>
+            
+           
+            <th scope="col">CIN</th>
+            <th scope="col">Nom Enseignant</th>
+            <th scope="col">Prénom enseignant</th>
+            <th scope="col">Email</th>
+           
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        
+
+          <tr  *ngFor="let a of users | filter:searchText ">
+            <ng-container *ngIf="a.type==='teacherbyadmin'">
+              <td class="pl-0">
+                {{a.cin}}
+              </td>
+
+              <td class="pl-0">{{a.nom}}</td>
+            
+              <td>{{a.prenom}}</td>
+
+              <td class="pl-0"><a href="mailto:{{a.email}}">{{a.email}}</a></td>
+              
+              
+            
+              <td>
+                <button mat-fab color="warn" aria-label="Example icon button with a delete icon" (click)="delete(a._id)"  matTooltip="Supprimer ">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+
+            </ng-container>
+           
+           
+             
+
+           
+              
+            
+            </tr>
+          
+         
+
+         
+      
+        </tbody>
+      </table>
+    </div>
+
+
+  </div>
+
+</div>

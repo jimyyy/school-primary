@@ -1,0 +1,98 @@
+<div class="content">
+
+    <div class="container">
+        <h2 class="mb-5">Mes Cours </h2>
+
+
+
+
+
+
+
+        <div class="table-responsive">
+
+
+
+            <table class="table table-striped custom-table">
+                <thead>
+                    <tr>
+
+
+
+                        <th scope="col">Module</th>
+                        <th scope="col">Matiere</th>
+                        <th scope="col">Enseignant</th>
+                        <th scope="col">Lien cours</th>
+
+                        
+                    </tr>
+                </thead>
+                <tbody>
+
+
+
+                    <tr *ngFor="let c of mycours">
+
+                        <ng-container *ngFor="let s of subjects">
+                            <td *ngIf="c.idModule == s._id">{{s.nomModule}}</td>
+                        </ng-container>
+
+
+                        <ng-container *ngFor="let m of matieres">
+                            <td *ngIf="c.idMatiere == m._id">{{m.nomMatiere}}</td>
+                        </ng-container>
+
+
+                       
+
+
+
+
+
+                        
+
+                        <ng-container *ngFor="let a of users">
+                            <td *ngIf="c.idEnseignant == a._id">{{a.prenom}}</td>
+                        </ng-container>
+
+                        <td>
+                            <a href="{{c.img}}" [routerLink]=""  (click)="open(c.img)">{{c.img}}</a>
+
+                        </td>
+
+
+                        
+
+
+
+
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </tr>
+
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+</div>

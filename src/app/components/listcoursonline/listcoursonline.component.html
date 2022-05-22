@@ -1,0 +1,105 @@
+
+<div class="content">
+    
+    <div class="container">
+      <h2 class="mb-5">les cours en lignes</h2>
+      
+           
+            <br>
+  
+            <br>
+      
+  
+      
+  
+      <div class="table-responsive">
+  
+        
+        <form >
+
+
+        <table class="table table-striped custom-table">
+          <thead>
+            <tr>
+              
+             
+              
+              <th scope="col">Nom </th>
+              <th scope="col">description</th>
+              <th scope="col">enseignant</th>
+              <th scope="col">Prix</th>
+      
+              <th scope="col">lien de cours</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          
+  
+            <tr  *ngFor="let a of courseonlines">
+  
+                
+                <td class="pl-0">{{a.nom}}</td>
+              
+                <td>{{a.description}}</td>
+                
+                <td class="pl-0">
+                  {{a.enseignant}}
+                   
+                   </td>
+  
+
+                <td class="pl-0">
+                 {{a.prix}}
+                  
+                  </td>
+
+
+
+                
+                 
+                     <td class="pl-0"><a href="{{a.img}}" [routerLink]=""  (click)="open(a.img)">{{a.img}}</a></td>
+    
+
+
+                
+                         
+              
+                <td>
+                 
+                
+                  
+                  <button mat-fab color="warn" aria-label="Example icon button with a delete icon" (click)="delete(a._id)"   >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                    
+
+
+                </td>
+  
+              
+             
+               
+  
+             
+                
+              
+              </tr>
+            
+           
+  
+           
+        
+          </tbody>
+        </table>
+      </form>
+
+        
+  
+
+      </div>
+  
+  
+    </div>
+  
+  </div>

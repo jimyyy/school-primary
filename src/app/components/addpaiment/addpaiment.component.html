@@ -1,0 +1,92 @@
+<div class="form-style-10">
+    <div class="logo_text"></div>
+    <h1> Paiement!<span> remplir les informations suivant pour payer!</span></h1>
+    <form #addfacturForm="ngForm" (ngSubmit)="addfactur()">
+        <div class="section"><span>1</span> les informations Personneles </div>
+        <div class="inner-wrap">
+            <label> Nom d'eléve
+
+                <input type="text" class="form-control" id="first_name" placeholder="Saisir votre Nom  " required
+                    [(ngModel)]="user.nom" [ngModelOptions]="{standalone:true}" disabled="true">
+
+
+
+            </label>
+
+
+            <label>Prénom d'eléve
+                <input type="text" class="form-control" id="last_name" placeholder="Saisir votre Prénom  " required
+                    [(ngModel)]="user.prenom" [ngModelOptions]="{standalone:true}"  disabled="true">
+
+            </label>
+
+            <label>Email Address
+                <input type="text" name="email" id="email" class="form-control" placeholder=" Saisir votre email  "
+                    required [(ngModel)]="user.email" [ngModelOptions]="{standalone:true}"  disabled="true">
+            </label>
+            <label>Phone Number
+                <input type="number" class="form-control" id="phone" placeholder="numero tel de l'eleve " required
+                    [(ngModel)]="user.tel" [ngModelOptions]="{standalone:true}"  disabled="true">
+            </label>
+        </div>
+
+        <div class="section"></div>
+
+
+        <div class="section"><span>2</span> Les informations de Paiement</div>
+        <div class="inner-wrap">
+
+
+            <label>Prix
+                <input type="text" class="form-control" id="card" placeholder="prix " required
+                    [(ngModel)]="paiment.Price" [ngModelOptions]="{standalone:true}">
+            </label>
+
+            <label> Les tranches
+                <select class="form-select" id="validationCustom04" placeholder=" Les tranches " required
+                    [(ngModel)]="paiment.mode" [ngModelOptions]="{standalone:true}">
+                    <option>Par trimestre </option>
+                    <option>Par anneé</option>
+                </select>
+
+            </label>
+
+
+            <label>Mode de Paiement
+                <select class="form-select" id="validationCustom04" placeholder="Mode de Paiement " required
+                    [(ngModel)]="paiment.tranche" [ngModelOptions]="{standalone:true}">
+                    <option>...</option>
+                    <option>Espece </option>
+                    <option> virment bancaire</option>
+                    <option> cheque</option>
+                </select>
+
+            </label>
+
+
+
+
+            <label>Montant Payé
+                <input type="number" class="form-control" id="address" placeholder="Avance  " required
+                    [(ngModel)]="paiment.Advance" [ngModelOptions]="{standalone:true}">
+
+            </label>
+            <label>Reste de Paiement
+                <input type="text" class="form-control" id="address" placeholder="Reste de paeiment sera afficher automatiquemnt dans la quittance " required
+                    [(ngModel)]="paiment.Rest" [ngModelOptions]="{standalone:true}" disabled="true">
+            </label>
+            <label>Date de Paiement
+                <input type="date" class="form-control" placeholder="Date de paeiment " required
+                    [(ngModel)]="paiment.date" [ngModelOptions]="{standalone:true}">
+
+
+            </label>
+        </div>
+        <div>
+            <div class="col-12" style="margin-left: 150px;">
+                <button type="submit" class="btn btn-lg btn-primary">Sauvgarder</button>
+            </div>
+
+        </div>
+    </form>
+</div>

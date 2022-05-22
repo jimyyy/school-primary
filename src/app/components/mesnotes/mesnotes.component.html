@@ -1,0 +1,102 @@
+<div class="content">
+
+    <div class="container">
+        <h2 class="mb-5">Mes notes </h2>
+
+
+
+
+
+
+        <div class="table-responsive">
+
+
+            <form [formGroup]="reclamForm">
+
+
+                <table class="table table-striped custom-table">
+                    <thead>
+                        <tr>
+
+
+
+
+
+                            <th scope="col"> Nom du module </th>
+                            <th scope="col"> Nom du matérie </th>
+                            <th scope="col"> Note du matérie </th>
+
+                            <th scope="col">Reclamation</th>
+
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        <tr *ngFor="let c of mynotes">
+
+
+
+                            <ng-container *ngFor="let b of subjects">
+
+                                <td *ngIf="c.idModule == b._id"> {{b.nomModule}}</td>
+                            </ng-container>
+
+
+
+
+                            <ng-container *ngFor="let b of matieres">
+
+                                <td *ngIf="c.idMatiere == b._id"> {{b.nomMatiere}}</td>
+                            </ng-container>
+
+
+
+                            <td> {{c.note}}</td>
+
+
+                            <td>
+
+
+                                <input class="form-control" id="inputLastName" type="text"
+                                    placeholder="Enter vote Reclamation" formControlName="reclamation">
+
+                            </td>
+
+
+
+
+
+
+
+
+                            <td class="pl-0">
+
+                                <button mat-fab color="second" aria-label="Example icon button with a delete icon"
+                                    (click)="add(reclamForm.value,c._id)">
+                                    <mat-icon>check_circle</mat-icon>
+                                </button>
+                            </td>
+
+
+
+
+
+
+                        </tr>
+
+
+
+
+
+                    </tbody>
+                </table>
+
+            </form>
+        </div>
+
+
+    </div>
+
+</div>

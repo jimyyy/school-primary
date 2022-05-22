@@ -1,0 +1,63 @@
+<div class="form-style-10">
+    <div class="logo_text"></div>
+    <h1> Paiement!<span> Modifier les informations suivant!</span></h1>
+    <form #editfacturForm="ngForm" (ngSubmit)="editfactur()">
+       
+
+
+        <div class="section"><span>2</span> Les informations de Paiement</div>
+        <div class="inner-wrap">
+
+
+            <label>Prix
+                <input type="text" class="form-control" id="card" placeholder="prix " required
+                    [(ngModel)]="paiment.Price" [ngModelOptions]="{standalone:true}">
+            </label>
+
+            <label>les tranches
+                <select class="form-select" id="validationCustom04" placeholder="les tranches " required
+                    [(ngModel)]="paiment.mode" [ngModelOptions]="{standalone:true}">
+                    <option>Par trimestre </option>
+                    <option>Par anneé</option>
+                </select>
+
+            </label>
+
+
+            <label>Mode de Paiement
+                <select class="form-select" id="validationCustom04" placeholder="Mode de Paiement " required
+                    [(ngModel)]="paiment.tranche" [ngModelOptions]="{standalone:true}">
+                    <option>Espece </option>
+                    <option> Virement bancaire</option>
+                    <option> cheque</option>
+                </select>
+
+            </label>
+
+
+
+
+            <label>Montant Payé
+                <input type="number" class="form-control" id="address" placeholder="Avance  " required
+                    [(ngModel)]="paiment.Advance" [ngModelOptions]="{standalone:true}">
+
+            </label>
+            <label>Reste de Paiement
+                <input type="text" class="form-control" id="address" placeholder="le reste sera automatiquement affiché dans la quittance " required
+                    [(ngModel)]="paiment.Rest" [ngModelOptions]="{standalone:true}" disabled="true">
+            </label>
+            <label>Date de Paiement
+                <input type="date" class="form-control" placeholder="Date de paeiment " required
+                    [(ngModel)]="paiment.date" [ngModelOptions]="{standalone:true}">
+
+
+            </label>
+        </div>
+        <div>
+            <div class="col-12" style="margin-left: 150px;">
+                <button type="submit" class="btn btn-lg btn-primary">Modifier</button>
+            </div>
+
+        </div>
+    </form>
+</div>

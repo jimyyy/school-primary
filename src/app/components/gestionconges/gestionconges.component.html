@@ -1,0 +1,86 @@
+<div class="content">
+
+  <div class="container">
+    <h2 class="mb-5">Gestion de Congés </h2>
+
+    <div class="table-responsive">
+
+
+      <input type="text" [(ngModel)]="searchText" placeholder="recherche">
+
+
+
+
+      <table class="table table-striped custom-table">
+        <thead>
+          <tr>
+
+
+            <th scope="col">Nom et prenom</th>
+          
+            <th scope="col">Date-debut--Date-fin</th>
+            
+            <th scope="col">Cause</th>
+            <th scope="col">Certification</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+
+
+          <tr *ngFor="let c of conges | filter:searchText">
+
+
+            <td class="pl-0">
+              {{c.nom}} {{c.prenom}}
+            </td>
+
+          
+
+            <td>{{c.datedebut}} -- {{c.datefin}}</td>
+
+            
+            <td class="pl-0">{{c.message}}</td>
+            <td class="pl-0"><a href="{{c.certif}}">{{c.certif}}</a></td>
+            <td class="pl-0">{{c.status}}</td>
+
+            <td>
+
+              <button mat-fab color="second" aria-label="Example icon button with a delete icon"
+                (click)="confirmconges(c)" matTooltip="Confirmé le congé">
+                <mat-icon>check_circle</mat-icon>
+              </button>
+              <button mat-fab color="second"
+                (click)="refuseConge(c)" matTooltip="Réfuser le congé">
+                <mat-icon>not_interested</mat-icon>
+              </button>
+
+
+              <button mat-fab color="warn" aria-label="Example icon button with a delete icon"
+                (click)="deleteconges(c._id)"  matTooltip="Supprimer congés">
+                <mat-icon>delete</mat-icon>
+              </button>
+
+
+
+
+            </td>
+
+
+
+
+          </tr>
+
+
+
+
+
+        </tbody>
+      </table>
+    </div>
+
+
+  </div>
+
+</div>

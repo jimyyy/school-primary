@@ -1,0 +1,114 @@
+<div class="content">
+    
+    <div class="container">
+      <h2 class="mb-5">Liste des étrangés confirmés </h2>
+      
+       
+         
+       <br> 
+  
+      
+  
+      
+  
+      <div class="table-responsive">
+  
+        
+  
+        <table class="table table-striped custom-table">
+          <thead>
+            <tr>
+              
+             
+          
+              <th scope="col">Nom </th>
+              <th scope="col">Prénom </th>
+              <th scope="col">Email</th>
+              <th scope="col">cours</th>
+           
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          
+  
+            <tr  *ngFor="let a of users   ">
+              <ng-container *ngIf="a.type==='onlineuserconfirmé'">
+               
+  
+                <td class="pl-0">{{a.nom}}</td>
+              
+                <td class="pl-0"  >{{a.prenom}}</td>
+  
+                <td class="pl-0">
+                  <a href="mailto:  {{a.email}}" >{{a.email}}</a>
+                  
+                  </td>
+                  <td class="pl-0">{{a.cours}}</td>
+             
+              
+              
+                <td>
+
+
+
+
+                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <button mat-fab color="warn" aria-label="Example icon button with a delete icon" (click)="delete(a._id)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+                </td>
+  
+              </ng-container>
+             
+             
+               
+  
+             
+                
+              
+              </tr>
+            
+           
+  
+           
+        
+          </tbody>
+        </table>
+      </div>
+  
+  
+    </div>
+  
+  </div>

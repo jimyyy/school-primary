@@ -1,0 +1,171 @@
+<mat-toolbar >
+    Dashboard Enseignant:
+    <nav class="navbar navbar-expand bg-blue  navbar-light sticky-top px-4 py-0" >
+
+        <div class="navbar-nav align-items-center ms-auto">
+
+
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+
+                    <button mat-icon-button (click)="clearCount()">
+                        <mat-icon class="icon">notifications</mat-icon>
+                        <span class="badge" *ngIf="badgeCount >= 0"  (click)="reload()">{{badgeCount}}</span>
+                    </button>
+
+                    <span class="d-none d-lg-inline-flex"  (click)="reload()">Notificatin </span>
+
+
+                </a>
+                <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                    <a class="dropdown-item" *ngFor="let n of mynotification">
+                        <ng-container *ngIf="n.type==='notif to enseignant'">
+
+                            <h4 class="fw-normal mb-0">{{n.title}}</h4>
+                            <small>{{n.nom}} {{n.prenom}}</small> <br>
+                            <small>date</small> : <small>{{n.date}}</small><br>
+                            <small>Status</small> : <small>{{n.status}}</small><br>
+                            <small>Action</small> :
+                            <button mat-icon-button color="warn" matTooltip="Supprimer"
+                                aria-label="Button that displays a tooltip when focused or hovered over"
+                                (click)="deletenotif(n._id)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                            <button mat-icon-button color="bg-light" matTooltip="marquer comme lue"
+                                aria-label="Button that displays a tooltip when focused or hovered over"
+                                (click)="updatestatus(n)">
+                                <mat-icon>check_circle</mat-icon>
+                            </button>
+
+                        </ng-container>
+
+
+
+
+
+
+                    </a>
+
+
+                </div>
+            </div>
+
+           
+
+
+        </div>
+
+    </nav>
+
+  
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened">
+            menu
+        </mat-icon>
+        <mat-icon *ngIf="sidenav.opened">
+            close
+        </mat-icon>
+    </button>
+
+    
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <ng-content></ng-content>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z10" mode="side" opened>
+        
+
+        <button mat-button class="menu-button"   [routerLink]="['profilens/:id']">
+            <mat-icon>person</mat-icon>
+            <span>profile</span>
+        </button>
+
+
+        <mat-divider></mat-divider>
+      
+
+
+        
+        <button mat-button class="menu-button" routerLink="">
+            <mat-icon>home</mat-icon>
+            <span>Acceuil</span>
+        </button>
+        <mat-divider></mat-divider>
+        
+        <button mat-button class="menu-button" [matMenuTriggerFor]="menu">
+            <mat-icon>menu</mat-icon>
+            <span>Gestion des congés</span>
+
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="statuscongesens" >Mes Congés</button>
+                <button mat-menu-item routerLink="addconges">Ajouter congés</button>
+               
+            </mat-menu>
+
+
+
+
+
+        </button>
+        <mat-divider></mat-divider>
+       
+
+
+        <button mat-button class="menu-button" [matMenuTriggerFor]="menu1">
+            <mat-icon>person</mat-icon>
+            <span>Gestion Cours</span>
+            <mat-menu #menu1="matMenu">
+                <button mat-menu-item routerLink="statuscour" >liste des cours</button>
+                <button mat-menu-item routerLink="addcour" >Ajouter cours </button>
+               
+               
+            </mat-menu>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-button class="menu-button" routerLink="absenceeleves" >
+            <mat-icon>border_color</mat-icon>
+            <span>Gestion des absences</span>
+           
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-button class="menu-button" routerLink="noteeleve" >
+            <mat-icon>border_color</mat-icon>
+            <span>Gestion des Notes</span>
+           
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-button class="menu-button" routerLink="calender">
+            <mat-icon>calendar_today</mat-icon>
+            <span>Emploi de Temps</span>
+           
+        </button>
+
+
+        <mat-divider></mat-divider>
+        <button mat-button class="menu-button" (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Déconnexion</span>
+           
+        </button>
+
+
+        
+
+
+    </mat-sidenav>
+    <mat-sidenav-content class="mat-elevation-z8"  >
+        
+        <div class="content mat-elevation-z8">
+            <main>
+                
+                <router-outlet></router-outlet>
+
+            </main>
+          
+            
+        </div>
+        
+      
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

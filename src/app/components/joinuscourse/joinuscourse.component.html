@@ -1,0 +1,93 @@
+<div class="main">
+    <div class="container">
+        
+            <div class="ico"  >
+                <img   src="assets/img/ico.jpg"   >
+            </div>
+
+            <div class="signup-content"   style="margin-left: 80px;">
+            <div >
+                <form  class="register-form" id="register-form"         [formGroup]="onlineform"           >
+                    <h2>INSCRIPTION DES Cours online </h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Nom:</label>
+                            <input type="text" name="name" id="name" required     formControlName="nom"  [ngClass]="{ 'is-invalid': submitted && f.nom.errors }"           />
+                            <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                                <div *ngIf="f.nom.errors.required" >Nom est Obligatoire</div>
+                               
+                            </div> 
+                        </div> 
+                            <div class="form-group">
+                            <label for="father_name">Prénom :</label>
+                            <input type="text" name="prenom" id="prenom" required      formControlName="prenom"   [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }"       />
+                            <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                                <div *ngIf="f.prenom.errors.required">Prenom est Obligatoire</div>
+                                
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address :</label>
+                        <input type="text" name="address" id="address" required            formControlName="email"  [ngClass]="{ 'is-invalid': submitted && f.email.errors }"     />
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">email est Obligatoire</div>
+                            <div *ngIf="f.email.errors.email">email doit etre confirmé</div>
+                        </div> 
+                    </div>
+                    <div class="form-group">
+                        <label >mot de passe :</label>
+                        <input type="password" name="mdp" id="mdp" required            formControlName="mdp"  [ngClass]="{ 'is-invalid': submitted && f.mdp.errors }"   />
+                        <div *ngIf="submitted && f.mdp.errors" class="invalid-feedback">
+                            <div *ngIf="f.mdp.errors.required">Mot de passe  est Obligatoire</div>
+                            <div *ngIf="f.mdp.errors.minlength">Mot de passe min 8 caracteres</div>
+                        </div> 
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="birth_date">tél:</label>
+                        <input type="text"      required  formControlName="tel"          [ngClass]="{ 'is-invalid': submitted && f.tel.errors }"      >
+                        <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
+                            <div *ngIf="f.tel.errors.required">tel est Obligatoire</div>
+                            <div *ngIf="f.tel.errors.pattern">tel doit etre egale a 8 chiffre</div>
+                        </div> 
+                    </div>
+                  
+                    <div class="select-list">
+                        <label for="course">Course :</label>
+                        <div class="form-select">
+                            <select name="course" id="course"   required formControlName="idcourseonline"   [ngClass]="{ 'is-invalid': submitted && f.idcourseonline.errors }"       >
+                                <option >...Select...</option>
+                                <option *ngFor="let g of courseonlines" value="{{g._id}}" > {{g.nom}} </option>
+                              
+                            </select>
+                            <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
+                                <div *ngIf="f.idcourseonline.errors.required">tel est Obligatoire</div>
+                                
+                            </div> 
+                            <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                        </div>
+                    </div>
+
+
+
+
+
+                    
+
+
+
+
+
+
+
+                   
+                    <div class="form-submit">
+                        <button class="btn btn-primary" type="submit" (click)="inscrit(onlineform.value)">Valider</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

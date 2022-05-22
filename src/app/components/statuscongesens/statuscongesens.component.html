@@ -1,0 +1,79 @@
+<div class="content">
+    
+    <div class="container">
+      <h2 class="mb-5">Mes congés</h2>
+      <input type="text" [(ngModel)]="searchText"  placeholder="recherche">
+      
+        
+      
+  
+      
+  
+      <div class="table-responsive">
+  
+        
+  
+        <table class="table table-striped custom-table">
+          <thead>
+            <tr>
+              
+             
+              
+              <th scope="col">date debut</th>
+              <th scope="col">date fin</th>
+              <th scope="col">message</th>
+              <th scope="col">Actions</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+          
+  
+            <tr  *ngFor="let c of myconges |filter:searchText">
+             
+                <td class="pl-0">
+                  {{c.datedebut}}
+                </td>
+  
+                <td class="pl-0">{{c.datefin}}</td>
+              
+                <td>{{c.message}}</td>
+                <td>
+                 
+                  <button class="btn"(click)="deleteconge(c._id)"><i class="fa fa-trash"></i></button>
+                  <button class="btn1"(click)="editconge(c._id)">edit</button>
+                  
+                
+                </td>
+                
+  
+  
+               
+                
+              
+                <td>
+                  {{c.status}}
+                </td>
+  
+              
+             
+             
+               
+  
+             
+                
+              
+              </tr>
+            
+           
+  
+           
+        
+          </tbody>
+        </table>
+      </div>
+  
+  
+    </div>
+  
+  </div>

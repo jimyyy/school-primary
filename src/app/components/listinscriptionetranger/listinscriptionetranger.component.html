@@ -1,0 +1,127 @@
+<div class="content">
+    
+    <div class="container">
+      <h2 class="mb-5">Liste des étrangés </h2>
+      
+       
+          <div >
+            
+        <input           type="text"   class="ip"          [(ngModel)]="searchText"  placeholder="recherche">
+
+  
+          </div>
+       <br> 
+  
+      
+  
+      
+  
+      <div class="table-responsive">
+  
+        
+  
+        <table class="table table-striped custom-table">
+          <thead>
+            <tr>
+              
+             
+          
+              <th scope="col">Nom </th>
+              <th scope="col">Prénom </th>
+              <th scope="col">Email</th>
+              <th scope="col">cours</th>
+              <th scope="col">priorité</th>
+              <th scope="col">Status</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          
+  
+            <tr  *ngFor="let a of users |filter:searchText    ">
+              <ng-container *ngIf="a.type==='onlineuser'">
+               
+  
+                <td class="pl-0">{{a.nom}}</td>
+              
+                <td class="pl-0"  >{{a.prenom}}</td>
+  
+                <td class="pl-0">
+                  <a href="mailto:  {{a.email}}" >{{a.email}}</a>
+                  
+                  </td>
+                  <td class="pl-0">{{a.cours}}</td>
+                  <td class="pl-0">{{a.priorite}}</td>
+                  <td class="pl-0">{{a.status}}</td>
+              
+              
+                <td>
+
+
+
+
+                    <button mat-fab color="second" aria-label="Example icon button with a delete icon"   (click)=" accepte(a)" matTooltip="ajouter a la liste des actif">
+                        <mat-icon>check_circle</mat-icon>
+                      </button>
+                      <button mat-fab color="second" aria-label="Example icon button with a delete icon"
+                      (click)="refuseens(a)" matTooltip="Réfuser eleve">
+                      <mat-icon>not_interested</mat-icon>
+                    </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <button mat-fab color="warn" aria-label="Example icon button with a delete icon" (click)="delete(a._id)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+                </td>
+  
+              </ng-container>
+             
+             
+               
+  
+             
+                
+              
+              </tr>
+            
+           
+  
+           
+        
+          </tbody>
+        </table>
+      </div>
+  
+  
+    </div>
+  
+  </div>

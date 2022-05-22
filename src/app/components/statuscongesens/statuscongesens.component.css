@@ -1,0 +1,16 @@
+.btn {
+    background-color: rgb(184, 18, 18);
+    border: none;
+    color: white;
+    padding: 10px 12px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .btn1 {
+    background-color: rgb(188, 243, 38);
+    border: none;
+    color: white;
+    padding: 10px 12px;
+    font-size: 14px;
+    cursor: pointer;
+  }

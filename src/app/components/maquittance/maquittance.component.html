@@ -1,0 +1,103 @@
+<div class="content">
+
+    <div class="container">
+        <h2 class="mb-5">Mon quittance de paiement</h2>
+
+
+
+        <div class="row">
+            <div class="search-hero">
+                <input type="text" [(ngModel)]="searchText" placeholder="recherche">
+
+            </div>
+        </div>
+
+
+
+
+
+        <div class="table-responsive">
+
+
+
+            <table class="table table-striped custom-table">
+                <thead>
+                    <tr>
+
+
+                        <th scope="col">Nom et prénom</th>
+                        <th scope="col">email</th>
+                        <th scope="col">Montant total</th>
+                        <th scope="col">Mode Paiment</th>
+                        <th scope="col">tranche</th>
+                        <th scope="col">Avance</th>
+                        <th scope="col">Reste</th>
+                        <th scope="col">date paiment</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <tr *ngFor="let p of myquittance | filter:searchText">
+                        <ng-container *ngFor="let u of users  ">
+                            <td class="pl-0" *ngIf="p.idEleve==u._id">
+                                {{u.nom}} {{u.prenom}}
+                            </td>
+                        </ng-container>
+
+                        <ng-container *ngFor="let u of users ">
+                            <td class="pl-0" *ngIf="p.idEleve==u._id">
+                                {{u.email}}
+                            </td>
+                        </ng-container>
+
+
+                        <td>{{p.Price}}</td>
+
+                        <td class="pl-0">{{p.mode}}</td>
+                        <td class="pl-0">{{p.tranche}}</td>
+                        <td>{{p.Advance}}</td>
+
+                        <td class="pl-0">{{p.Rest}}</td>
+                        <td class="pl-0">{{p.date}}</td>
+
+
+
+                        <td>
+
+
+
+                            <button mat-fab color="" aria-label="Example icon button with a delete icon"
+                                (click)="downLoadPdfEleve(p._id)">
+                                <mat-icon>backup</mat-icon>
+
+
+                            </button>
+
+
+                        </td>
+
+
+
+
+
+
+
+
+
+                    </tr>
+
+
+
+
+
+                </tbody>
+            </table>
+           
+        </div>
+
+
+    </div>
+
+</div>

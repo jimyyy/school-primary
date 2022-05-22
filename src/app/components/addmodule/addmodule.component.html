@@ -1,0 +1,32 @@
+
+<div class="registration-form">
+    <form  #modulForm="ngForm" (ngSubmit)="Addmodule()" >
+        <div class="form-icon">
+            <img src="assets/img/module.jpg">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control " id="username" placeholder="Nom Module *"  [(ngModel)]="subject.nomModule" [ngModelOptions]="{standalone:true}" >
+        </div>
+        
+        <div class="form-group">
+            <input type="number" class="form-control " id="description" placeholder="coefficient" [(ngModel)]="subject.coef" [ngModelOptions]="{standalone:true}" >
+        </div>
+       
+
+
+        
+
+
+        
+        <div class="form-group">
+            <button type="submit" class="btn btn-block create-account">Ajouter Module</button>
+        </div>
+
+
+
+    </form>
+
+
+    
+  
+</div>

@@ -1,0 +1,115 @@
+<div class="content">
+  <div class="container">
+    <h2 class="mb-5">Gestion des absences des éleves</h2>
+
+    <div class="table-responsive">
+      <form [formGroup]="addForm">
+        <input type="datetime-local" class="form-controll" placeholder="Date de journée " formControlName="date"
+          [ngClass]="{ 'is-invalid': submitted && f.date.errors }" />
+        <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+          <div *ngIf="f.date.errors.required" style="color: rgb(32, 124, 124);">date est Obligatoire</div>
+        </div>
+        <br>
+        <br>
+
+
+
+        <select class="form-select" formControlName="idGroupe" placeholder="Choisir Groupe" (change)="onSelect($event)"
+          [ngClass]="{ 'is-invalid': submitted && f.idGroupe.errors }">
+          <option>... Select ...</option>
+          <option *ngFor="let g of groups" value="{{g._id}}">
+            {{g.nomgroupe}} </option>
+
+
+        </select>
+        <div *ngIf="submitted && f.idGroupe.errors" class="invalid-feedback">
+          <div *ngIf="f.idGroupe.errors.required" style="color: rgb(32, 124, 124);">Nom est Obligatoire</div>
+        </div>
+
+        <br>
+
+        <select class="form-select" formControlName="idMatiere" placeholder="Choisir Matiere"  [ngClass]="{ 'is-invalid': submitted && f.idMatiere.errors }" >
+          <option selected="true">...Select ...</option>
+          <option *ngFor="let m of matieres" [value]="m._id">
+            {{ m.nomMatiere }} </option>
+
+
+        </select>
+        <div *ngIf="submitted && f.idMatiere.errors" class="invalid-feedback">
+          <div *ngIf="f.idMatiere.errors.required" style="color: rgb(32, 124, 124);">Nom est Obligatoire</div>
+        </div>
+
+
+        <br> <br> <br>
+
+
+
+        <table class="table table-striped custom-table">
+          <thead>
+            <tr>
+              <th scope="col">Nom Eleve</th>
+
+              <th scope="col">Prenom Eleve</th>
+              <th scope="col">Remarque Du Jour</th>
+              <th scope="col">Presence</th>
+
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of grp">
+              <ng-container *ngIf="a.type === 'studentbyadmin'">
+                <td class="pl-0">
+                  <input class="form-control" id="inputLast" type="text" placeholder="{{ a.prenom }}" disabled="true" />
+                </td>
+
+                <td class="pl-0">
+                  <input class="form-control" id="inputfirstName" type="text" placeholder="{{ a.nom }}"
+                    disabled="true" />
+                </td>
+
+                <td>
+                  <div class="col-md-6">
+
+                    <textarea matInput class="form-control" name="" id="" cols="60" rows="1"
+                      placeholder="Notez vos notes de la journée" formControlName="remarque" [ngClass]="{ 'is-invalid': submitted && f.remarque.errors }"></textarea>
+                      <div *ngIf="submitted && f.remarque.errors" class="invalid-feedback">
+                        <div *ngIf="f.remarque.errors.required" style="color: rgb(32, 124, 124);">Nom est Obligatoire</div>
+                      </div>
+                  </div>
+                </td>
+
+                <td>
+
+
+                  <mat-radio-group aria-label="Select an option" formControlName="presence" [ngClass]="{ 'is-invalid': submitted && f.presence.errors }">
+                    <mat-radio-button value="Present">Present</mat-radio-button>
+                    <mat-radio-button value="Absent">Absent</mat-radio-button>
+                  </mat-radio-group>
+                  <div *ngIf="submitted && f.presence.errors" class="invalid-feedback">
+                    <div *ngIf="f.presence.errors.required" style="color: rgb(32, 124, 124);">Nom est Obligatoire</div>
+                  </div>
+                </td>
+                <td>
+
+
+                  <button mat-fab color="second" aria-label="Example icon button with a delete icon"
+                    (click)="add(addForm.value, a._id)">
+                    <mat-icon>check_circle</mat-icon>
+                  </button>
+
+
+
+
+
+                </td>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+
+
+  </div>
+</div>

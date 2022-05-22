@@ -1,0 +1,39 @@
+<div class="container" style="margin-top:50px ;">
+    <div class="row">
+        <div class="col-md-10">
+          
+            <full-calendar [options]="calendarOptions" ></full-calendar>
+
+        </div>
+        <div class="col-md-2" >
+            <form #addeventForm="ngForm" (ngSubmit)="saveEvent()" *ngIf="!connected">
+                
+                
+                <h3>ajouter </h3>
+                <div class="mb-3">
+                    <label class="form-label">Nom de cour </label>
+                    <input type="text" class="form-control"    [(ngModel)]="event.title"
+                    [ngModelOptions]="{standalone: true}" required >
+                   
+                </div>
+                <div class="mb-3">
+                    <label  class="form-label">date debut</label>
+                    <input type="datetime-local" class="form-control"   [(ngModel)]="event.date"
+                    [ngModelOptions]="{standalone: true}" required>
+                   
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">date fin</label>
+                    <input type="datetime-local" class="form-control"[(ngModel)]="event.datefin"
+                    [ngModelOptions]="{standalone: true}" required>
+                   
+                </div>
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+</div>

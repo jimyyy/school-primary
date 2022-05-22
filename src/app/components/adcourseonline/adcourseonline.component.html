@@ -1,0 +1,53 @@
+<div class="registration-form">
+    <form  [formGroup]="onlineform"        >
+        <div class="form-icon">
+            <img src="assets/img/cour.jpg">
+        </div>
+       
+      
+        <div class="form-group">
+            <input type="text" class="form-control item" id="phone-number" placeholder="Nom cours"   required     formControlName="nom" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }"  >
+            <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                <div *ngIf="f.nom.errors.required" style="color: rgb(32, 124, 124);">Nom est Obligatoire</div>
+            </div>  
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control item" id="phone-number" placeholder="description cours"  required     formControlName="description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"   >
+            <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                <div *ngIf="f.description.errors.required" style="color: rgb(32, 124, 124);">description est Obligatoire</div>
+            </div>  
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control item" id="phone-number" placeholder="Prix de cours"  required     formControlName="prix"  [ngClass]="{ 'is-invalid': submitted && f.prix.errors }"   >
+            <div *ngIf="submitted && f.prix.errors" class="invalid-feedback">
+                <div *ngIf="f.prix.errors.required" style="color: rgb(32, 124, 124);">Nom est Obligatoire</div>
+            </div>  
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control item" id="phone-number" placeholder="nbre max du personnes" required     formControlName="max" [ngClass]="{ 'is-invalid': submitted && f.max.errors }"    >
+            <div *ngIf="submitted && f.max.errors" class="invalid-feedback">
+                <div *ngIf="f.max.errors.required" style="color: rgb(32, 124, 124);">Nom est Obligatoire</div>
+            </div>  
+        </div>
+
+
+        <div class="form-group">
+            <input type="text" class="form-control item" id="phone-number" placeholder="nom d' enseignant "  required     formControlName="enseignant" [ngClass]="{ 'is-invalid': submitted && f.enseignant.errors }"    >
+            <div *ngIf="submitted && f.enseignant.errors" class="invalid-feedback">
+                <div *ngIf="f.enseignant.errors.required" style="color: rgb(32, 124, 124);">Nom est Obligatoire</div>
+            </div>  
+        </div>
+
+        <div class="form-group">
+            <input type="file"  class="form-control item" id="birth-date" placeholder="cour en pdf"      required  #filePicker
+            (change)='onImageSelected($event)'         >
+        </div> 
+        <div class="form-group">
+            <button type="submit"    class="btn btn-block create-account"    (click)="Addcour(onlineform.value)"     >Ajouter Cour</button>
+        </div>
+    </form>
+  
+</div>
+

@@ -1,0 +1,92 @@
+<div class="content">
+    
+    <div class="container">
+      <h2 class="mb-5">Gestion de Préinscrit des eléves </h2>
+
+      <div class="table-responsive">
+
+
+
+        
+<input type="text" [(ngModel)]="searchText"  placeholder="recherche">
+
+        <table class="table table-striped custom-table">
+          <thead>
+            <tr>
+              
+             
+              <th scope="col">Nom Eléve</th>
+              <th scope="col">Prenom Eléve</th>
+              <th scope="col">datedenaissance</th>
+              <th scope="col">question de fraternité</th>
+              <th scope="col">niveau</th>
+              <th scope="col">Email</th>
+              <th scope="col">photo cin parents</th>
+              <th scope="col">Action</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+          
+
+            <tr  *ngFor="let a of users |filter:searchText">
+              <ng-container *ngIf="a.type==='preeleve'">
+                <td class="pl-0">
+                  {{a.nom}}
+                </td>
+  
+                <td class="pl-0">{{a.prenom}}</td>
+              
+                <td>{{a.datenaissance}}</td>
+                <td>{{a.presence}}</td>
+                <td>{{a.niveau}}</td>
+  
+                <td class="pl-0"><a href="mailto:{{a.email}}">{{a.email}}</a></td>
+                <td class="pl-0"><a href="{{a.img}}">{{a.img}}</a></td>
+               
+              
+                <td>
+                  
+                <button mat-fab color="second" aria-label="Example icon button with a delete icon"   (click)=" accepte(a)" matTooltip="Accepter eleve">
+                  <mat-icon>check_circle</mat-icon>
+                </button>
+                <button mat-fab color="second" aria-label="Example icon button with a delete icon"
+                (click)="refuseeleve(a)" matTooltip="Réfuser élève">
+                <mat-icon>not_interested</mat-icon>
+              </button>
+              
+
+                <button mat-fab color="warn" aria-label="Example icon button with a delete icon"    (click)="delete(a._id)" matTooltip="Supprimer eleve" >
+                  <mat-icon>delete</mat-icon>
+                </button>
+
+
+                
+
+                </td>
+
+                <td>{{a.status}}</td>
+
+              </ng-container>
+             
+             
+                
+  
+             
+                
+              
+              </tr>
+            
+           
+
+           
+        
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+
+  </div>
+    

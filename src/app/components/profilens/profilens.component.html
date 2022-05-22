@@ -1,0 +1,81 @@
+<div class="container-xl px-4 mt-4">
+    <!-- Account page navigation-->
+
+    <hr class="mt-0 mb-4">
+    <div class="row">
+        <div class="col-xl-4">
+            <!-- Profile picture card-->
+            <div class="card mb-4 mb-xl-0">
+                <div class="card-header">Profile Picture</div>
+                <form #profilensForm="ngForm" (ngSubmit)="profilens()">
+                    <div class="card-body text-center">
+
+                        <img class="img-account-profile rounded-circle mb-2" [src]="user.photo" alt="">
+                        <!-- Profile picture help block-->
+                        <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                        <label for="img2"><i class="fa fa-plus"
+                                style="font-size: 24px;border: 1px;padding: 25px;cursor: pointer;"></i></label>
+                        <!-- Profile picture upload button-->
+                        <input type="file" id="img2" #filePicker (change)="onselectFile($event)"
+                            style="display: none;visibility: none;">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-xl-8">
+            <!-- Account details card-->
+            <div class="card mb-4">
+                <div class="card-header">Account Details</div>
+                <div class="card-body">
+                    <form #profilensForm="ngForm" (ngSubmit)="profilens()">
+                        <!-- Form Group (username)-->
+
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (first name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputFirstName">Nom</label>
+                                <input class="form-control" id="inputFirstName" type="text"
+                                    placeholder="Enter your first name" value="Valerie" [(ngModel)]="user.nom"
+                                    [ngModelOptions]="{standalone:true}">
+                            </div>
+                            <!-- Form Group (last name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLastName">Prénom</label>
+                                <input class="form-control" id="inputLastName" type="text"
+                                    placeholder="Enter your last name" value="Luna" [(ngModel)]="user.prenom"
+                                    [ngModelOptions]="{standalone:true}">
+                            </div>
+                        </div>
+                        <!-- Form Row        -->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (organization name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputOrgName">Email</label>
+                                <input class="form-control" id="inputOrgName" type="email"
+                                    placeholder="Enter your organization name" value="Start Bootstrap"
+                                    [(ngModel)]="user.email" [ngModelOptions]="{standalone:true}">
+                            </div>
+
+                        </div>
+                        <!-- Form Group (email address)-->
+
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (phone number)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputPhone">Phone number</label>
+                                <input class="form-control" id="inputPhone" type="tel"
+                                    placeholder="Enter your phone number" value="555-123-4567" [(ngModel)]="user.tel"
+                                    [ngModelOptions]="{standalone:true}">
+                            </div>
+
+                        </div>
+                        <!-- Save changes button-->
+                        <button class="btn btn-primary" type="submit">Save changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

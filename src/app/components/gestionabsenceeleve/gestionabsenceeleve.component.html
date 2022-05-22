@@ -1,0 +1,101 @@
+<div class="content">
+
+    <div class="container">
+        <h2 class="mb-5">Gestion des absences de Eléve </h2>
+
+        <div class="table-responsive">
+
+
+
+
+
+            <table class="table table-striped custom-table">
+                <thead>
+                    <tr>
+
+
+                        <th scope="col">Nom Eléve</th>
+                        <th scope="col">Nom Enseignant</th>
+                        <th scope="col">date</th>
+                        <th scope="col">presence</th>
+                        <th scope="col">Remarque</th>
+                        <th scope="col">Matiere </th>
+
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <tr *ngFor="let b of fiches">
+
+
+
+                        <ng-container *ngFor="let u of users">
+
+                            <td *ngIf="b.idEleve == u._id"> {{u.nom}} {{u.prenom}}</td>
+
+                        </ng-container>
+
+                        <ng-container *ngFor="let r of users ">
+                          
+                            <td *ngIf="b.idEnseignant == r._id  "> {{r.nom}} {{r.prenom}} </td>
+                
+                           
+
+                           
+
+                        </ng-container>
+
+
+
+                        <td>{{b.date}}</td>
+                        <td>{{b.presence}}</td>
+                        <td class="pl-0">
+                            {{b.remarque}}
+                        </td>
+                        <ng-container *ngFor="let c of matieres">
+
+                            <td *ngIf="b.idMatiere == c._id"> {{c.nomMatiere}}</td>
+                        </ng-container>
+
+
+
+
+
+
+
+
+                        <td>
+
+
+
+
+                            <button mat-fab color="warn" aria-label="Example icon button with a delete icon"
+                                (click)="deleteabsence(b._id)">
+
+                                <mat-icon>delete</mat-icon>
+
+                            </button>
+
+
+
+                        </td>
+
+
+
+
+                    </tr>
+
+
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+</div>

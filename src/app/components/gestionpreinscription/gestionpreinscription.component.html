@@ -1,0 +1,86 @@
+
+<div class="content">
+    
+    <div class="container">
+      <h2 class="mb-5">Gestion des Condidatures</h2>
+
+      <div class="table-responsive">
+
+
+
+        
+<input type="text"  [(ngModel)]="searchText"  placeholder="recherche">
+
+        <table class="table table-striped custom-table">
+          <thead>
+            <tr>
+              
+             
+              <th scope="col">Nom Prenom Enseignant</th>
+              
+              <th scope="col">Cin</th>
+              <th scope="col">Email</th>
+              <th scope="col">Cv</th>
+
+              <th scope="col">Action</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+          
+
+            <tr  *ngFor="let a of users |filter:searchText">
+              <ng-container *ngIf="a.type=== 'preteacher'">
+                <td class="pl-0">
+                  {{a.nom}}   {{a.prenom}}
+                </td>
+  
+                
+              
+                <td>{{a.cin}}</td>
+  
+                <td class="pl-0"><a href="mailto:{{a.email}}" >{{a.email}}</a></td>
+                <td class="pl-0"><a href="{{a.img2}}" [routerLink]=""  (click)="open(a.img2)">{{a.img2}}</a></td>
+              
+                <td>
+                  
+                <button mat-fab color="second" aria-label="Example icon button with a delete icon"   (click)=" accepte(a)" matTooltip="ajouter a la liste des actif">
+                  <mat-icon>check_circle</mat-icon>
+                </button>
+                <button mat-fab color="second" aria-label="Example icon button with a delete icon"
+                (click)="refuseens(a)" matTooltip="Réfuser enseignant">
+                <mat-icon>not_interested</mat-icon>
+              </button>
+              
+
+                <button mat-fab color="warn" aria-label="Example icon button with a delete icon"    (click)="delete(a._id)" matTooltip="Supprimer enseignant" >
+                  <mat-icon>delete</mat-icon>
+                </button>
+                </td>
+
+                <td>{{a.status}}</td>
+
+
+              </ng-container>
+             
+             
+                
+                
+  
+             
+                
+              
+              </tr>
+            
+           
+
+           
+        
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+
+  </div>

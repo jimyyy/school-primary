@@ -1,0 +1,24 @@
+.mat-form-field {
+    width: 900px;
+    margin-top: 30px;
+    margin-bottom: 5px;
+
+    
+}
+.mat-option{
+width: 1000px;
+}
+
+.form-controll{
+    width: 1020px;
+    height: 50px;
+    background-color: #f0f0f0;
+}
+.mb-5{
+    margin-bottom: 100px;
+}
+
+.form-select{
+    height: 50px;
+    background-color: #f0f0f0;
+}

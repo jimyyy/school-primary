@@ -1,0 +1,92 @@
+<div class="content">
+
+  <div class="container">
+    <h2 class="mb-5">Mes cours</h2>
+    <input type="text" [(ngModel)]="searchText" placeholder="recherche">
+
+
+
+
+
+
+    <div class="table-responsive">
+
+
+
+      <table class="table table-striped custom-table">
+        <thead>
+          <tr>
+
+
+
+            <th scope="col">Nom module</th>
+            <th scope="col">Nom matiere</th>
+            <th scope="col">Niveau</th>
+            <th scope="col">Cours.pdf</th>
+            <th scope="col">Actions</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+
+
+          <tr *ngFor="let c of mycour |filter:searchText">
+            <ng-container *ngFor="let s of subjects">
+              <td class="pl-0" *ngIf="c.idModule==s._id">
+                {{s.nomModule}}
+              </td>
+
+            </ng-container>
+            <ng-container *ngFor="let m of matieres">
+              <td class="pl-0" *ngIf="c.idMatiere==m._id">
+                {{m.nomMatiere}}
+              </td>
+
+            </ng-container>
+           <td>
+             {{c.niveau}}
+           </td> 
+
+
+
+
+            <td>{{c.img}}</td>
+            <td>
+
+              <button class="btn" (click)="deletecour(c._id)"><i class="fa fa-trash"></i></button>
+              
+
+
+            </td>
+
+
+
+
+
+
+            <td>
+              {{c.status}}
+            </td>
+
+
+
+
+
+
+
+
+
+          </tr>
+
+
+
+
+
+        </tbody>
+      </table>
+    </div>
+
+
+  </div>
+
+</div>

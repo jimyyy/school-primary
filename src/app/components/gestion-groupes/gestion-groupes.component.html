@@ -1,0 +1,99 @@
+<div class="container">
+    <div class="row" >
+        <div class="col-lg-12 "  style="margin-left: 250px;">
+
+            <div class="wrapper"  >
+               
+
+
+                <form [formGroup]="addgroupForm">
+                    <div id="wizard">
+                       
+                        <div><br>
+                           
+                            <h2  class="add">Groupe d'apprentissage</h2>
+                        </div><br>
+                        <section>
+                            <div >
+            
+                                <div class="form-row" >
+                                    <input type="text" class="form-control" id="inputPassword4" placeholder="nom de Groupe"  formControlName="nomgroupe"   [ngClass]="{ 'is-invalid': submitted && f.nomgroupe.errors }" >
+                                    <div *ngIf="submitted && f.nomgroupe.errors" class="invalid-feedback">
+                                        <div *ngIf="f.nomgroupe.errors.required" style="color: rgb(32, 124, 124);">Nom est Obligatoire</div>
+                                    </div>  
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <label for="validationCustom04" class="form-label">Choisir Enseignant</label>
+                                        <select class="form-select" id="validationCustom04"  formControlName="enseignat"   [ngClass]="{ 'is-invalid': submitted && f.enseignat.errors }">
+                                            <option *ngFor="let g of myusers" value="{{g.nom}} {{g.prenom}}">{{g.nom}} {{g.prenom}}</option>
+                                            <option>...</option>
+                                        </select>
+                                        <div *ngIf="submitted && f.enseignat.errors" class="invalid-feedback">
+                                            <div *ngIf="f.enseignat.errors.required" style="color: rgb(32, 124, 124);">Enseignant est Obligatoire</div>
+                                        </div>  
+                                     
+                                    </div>
+            
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <label for="validationCustom04" class="form-label" >Choisir Module</label>
+                                        <select class="form-select" id="validationCustom0"  formControlName="module"   [ngClass]="{ 'is-invalid': submitted && f.module.errors }" >
+                                            
+                                            <option *ngFor="let s of subjects" value="{{s.nomModule}}">{{s.nomModule}}</option>
+                                            
+                                        </select>
+                                        <div *ngIf="submitted && f.module.errors" class="invalid-feedback">
+                                            <div *ngIf="f.module.errors.required" style="color: rgb(32, 124, 124);">module est Obligatoire</div>
+                                        </div>  
+                                     
+                                       
+                                    </div>
+                                </div>
+                             
+                                <div class="form-row">
+                                    <input type="datetime-local" class="form-control" id="inputPassword4" placeholder="date debut"
+                                        required  formControlName="datedebut"   [ngClass]="{ 'is-invalid': submitted && f.datedebut.errors }" >
+
+                                        <div *ngIf="submitted && f.datedebut.errors" class="invalid-feedback">
+                                            <div *ngIf="f.datedebut.errors.required" style="color: rgb(32, 124, 124);">datedebut est Obligatoire</div>
+                                        </div>  
+                                </div>
+                                <div class="form-row">
+                                    <input type="datetime-local" class="form-control" id="inputPassword4" placeholder="date fin"
+                                        required  formControlName="datefin"  [ngClass]="{ 'is-invalid': submitted && f.datefin.errors }" >
+                                        <div *ngIf="submitted && f.datefin.errors" class="invalid-feedback">
+                                            <div *ngIf="f.datefin.errors.required" style="color: rgb(32, 124, 124);">datefin est Obligatoire</div>
+                                        </div>  
+                                    
+                                </div>
+                               
+                                <div  >
+                                    <button class="btn btn-primary" type="submit" (click)="addgroupe(addgroupForm.value)" >Valider</button>
+                                  </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+                            </div>
+            
+            
+                        </section>
+            
+            
+                    </div>
+            
+            
+                </form>
+            
+            </div>
+
+        </div>
+    </div>
+</div>

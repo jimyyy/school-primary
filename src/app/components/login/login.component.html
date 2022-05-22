@@ -1,0 +1,48 @@
+<div class="container ">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="wrapper" >
+                <div class="image-holder"  >
+                    <img src="assets/img/form-wizard.png" height="500px"  >
+                </div>
+                
+                <form #loginForm="ngForm" (ngSubmit)="login()"  >
+                   
+                    <div id="wizard"  >
+                        <h2 style="text-align:center;  " class="login">Connexion</h2><br><br>
+                        <!-- SECTION 1 -->
+                        
+                        <section>
+                            <div >
+                            
+                                <div class="input-container" >
+                                    <i class="fa fa-envelope icon"></i>
+                                    <input type="text" class="form-control" id="inputPassword4" placeholder="Email "[(ngModel)]="user.email" [ngModelOptions]="{standalone:true}" > <!--les input taay o nhoot esm objet ely declarito f 'ts' kif hne user howa objet taana -->  
+                                </div><br>
+                                
+                                
+                            
+                                <div class="form-row">
+                                    
+                                    <div class="input-container">
+                                        <i class="fa fa-key icon"></i>
+                                        <input id="password" type="password" class="form-control" placeholder="Mot de passe" [(ngModel)]="user.mdp" [ngModelOptions]="{standalone:true}" >
+                                    </div>
+                                </div><br>
+                             
+                             <div  >
+                                <button class="btn btn-primary" type="submit"   >Connexion</button>
+                              </div>
+                            
+            
+                            </div>  
+                           
+                           
+                        </section>
+                    </div>
+                </form>
+            </div> 
+
+        </div>
+    </div>
+</div>

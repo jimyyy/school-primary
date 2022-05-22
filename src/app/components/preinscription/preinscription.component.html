@@ -1,0 +1,261 @@
+<div class="container-fluid bg-primary py-5 mb-5 page-header">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <h1 class="display-3 text-white animated slideInDown">{{titre}}</h1>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class=container>
+    <div class="row">
+
+        <div class="col-lg-12 ">
+            <p class="fs-5">Nous vous remercions de l'intérêt que vous portez à notre Ecole .
+                Si vous souhaitez inscrire votre enfant à la rentrée prochaine merci de bien vouloir prendre quelques
+                minutes afin de remplir le formulaire ci-dessous .Pour cela, vous aurez à scanner quelques documents
+                afin de les intégrer au dossier numérique :
+                <li>une copie de passeport si vous etes des étranger.</li>
+                <li>une photo d'identité.</li>
+                <li>une pièce d'identité d'un des deux parents.</li>
+                Après avoir saisi votre demande , deux options s'offrent à vous :
+                <li>Finaliser votre dossier numérique en réglant les frais de dossier en ligne.</li>
+                <li>Finaliser votre demande en déposant une version papier et en réglant les frais de dossier auprès de
+                    l'un de nos conseillers.
+                </li>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<div class="wrapperr" style="margin-left: 400px;" class="col-lg-6">
+
+
+
+    <form  [formGroup]="preinscritform">
+        <div id="wizardd">
+            <!-- SECTION 1 -->
+            <h4></h4>
+            <section>
+
+
+
+                <div class="form-row">
+                    <label for="validationCustom01" class="form-label">Nom eleve *</label>
+                    <input type="text" class="form-control" id="validationCustom01" required formControlName="nom" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }">
+                    <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                        <div *ngIf="f.nom.errors.required" >Nom est Obligatoire</div>
+                        <div *ngIf="f.nom.errors.minlength">le nom min 2 caracateres</div>
+                    </div> 
+                </div>
+               
+
+
+
+                <div class="form-row">
+                    <label for="validationCustom02" class="form-label">Prénom eleve *</label>
+                    <input type="text" class="form-control" id="validationCustom02" required formControlName="prenom"  [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }">
+                    <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                        <div *ngIf="f.prenom.errors.required" >prenom est Obligatoire</div>
+                        <div *ngIf="f.prenom.errors.minlength">le prenom min 2 caracateres</div>
+                    </div> 
+                </div>
+
+
+
+
+
+                <div class="form-row">
+                    <label for="">
+                        Date de naissance *
+                    </label>
+                    <input type="date" class="form-control" required formControlName="datenaissance"  [ngClass]="{ 'is-invalid': submitted && f.datenaissance.errors }">
+
+                    <div *ngIf="submitted && f.datenaissance.errors" class="invalid-feedback">
+                        <div *ngIf="f.datenaissance.errors.required" >date de naissance est Obligatoire</div>
+                        
+                    </div> 
+
+
+
+                    
+
+                </div>
+               
+
+
+
+
+
+                <div class="form-row">
+                    <label for=""> Email eleve </label>
+                    <div class="input-group has-validation">
+
+                        <input type="email" class="form-control" id="validationCustomUsername"
+                            aria-describedby="inputGroupPrepend" required formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required" >email est Obligatoire</div>
+                                <div *ngIf="f.email.errors.email">email doit etre confirmé</div>
+                            </div> 
+
+                    </div>
+
+                   
+
+
+
+
+
+
+
+
+                </div>
+                <div class="form-row">
+                    <label for="">
+                        mot de passe *
+                    </label>
+                    <input type="password" class="form-control" required formControlName="mdp" [ngClass]="{ 'is-invalid': submitted && f.mdp.errors }">
+                    <div *ngIf="submitted && f.mdp.errors" class="invalid-feedback">
+                        <div *ngIf="f.mdp.errors.required" >mdp est Obligatoire</div>
+                        <div *ngIf="f.mdp.errors.minlength">comporte 8 caracteres</div>
+                    </div> 
+
+                    
+                </div>
+
+               
+
+
+               
+
+
+
+                <div class="form-row">
+                    <label for="">
+                        tel *
+                    </label>
+                    <input type="text" class="form-control" required formControlName="tel"  placeholder="1231231230" ng2TelInput (keypress)="numericOnly($event)"  [ngClass]="{ 'is-invalid': submitted && f.tel.errors }">
+
+                    <div *ngIf="submitted && f.tel.errors" class="invalid-feedback">
+                        <div *ngIf="f.tel.errors.required" >tel est Obligatoire</div>
+                        <div *ngIf="f.tel.errors.minlength">comporte 10 caracteres</div>
+                    </div> 
+                   
+
+
+
+
+                </div>
+                <div class="form-row">
+                    <label for="">
+                        Est ce que vous avez l'un de vos frère insiste dans notre ecole*
+                    </label>
+                    <mat-radio-group aria-label="Select an option" formControlName="presence" [ngClass]="{ 'is-invalid': submitted && f.presence.errors }">
+                        <mat-radio-button value="oui">oui</mat-radio-button>
+                        <mat-radio-button value="non">non</mat-radio-button>
+                      </mat-radio-group>
+
+                    <div *ngIf="submitted && f.presence.errors" class="invalid-feedback">
+                        <div *ngIf="f.presence.errors.required" > Obligatoire</div>
+                      
+                    </div> 
+                   
+
+
+
+
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <label for="validationCustom04" class="form-label" >Année Scolaire *</label>
+                        <select class="form-select"  required formControlName="niveau"  [ngClass]="{ 'is-invalid': submitted && f.niveau.errors }" >
+                            <option  selected="true">...</option>
+                            <option value="1er" >1er anneé</option>
+                            <option value="2eme"  >2eme année</option>
+                            <option value="3eme" >3eme année</option>
+                            <option value="4eme"  >4eme année</option>
+                            <option value="5eme">5eme année</option>
+                            <option value="6eme"  >6eme année</option>
+                            
+                        </select>
+                        <div *ngIf="submitted && f.niveau.errors" class="invalid-feedback">
+                            <div *ngIf="f.niveau.errors.required" >nat est Obligatoire</div>
+                            
+                        </div> 
+                       
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <label for="validationCustom04" class="form-label" >Résidence *</label>
+                        <select class="form-select" id="hhh" required formControlName="nat"  (change)="onChange($event.target.value)" [ngClass]="{ 'is-invalid': submitted && f.nat.errors }" >
+                            <option>...Select...</option>
+                            
+                            <option value="resident" selected="true">Résident</option>
+                            <option value="etranger"  >étranger</option>
+                            
+                        </select>
+                        <div *ngIf="submitted && f.nat.errors" class="invalid-feedback">
+                            <div *ngIf="f.nat.errors.required" >Champ est Obligatoire</div>
+                            
+                        </div> 
+                       
+                    </div>
+                </div>
+
+
+
+
+
+
+
+               
+
+
+
+
+                <div class="form-row">
+                    <label for="" id="hhhh" >photos CIN parent *</label>
+                    <input type="file" #filePicker (change)='onImageSelected($event)' class="form-control" name="img"  [ngClass]="{ 'is-invalid': submitted && f.img.errors }" >
+                    <div *ngIf="submitted && f.img.errors" class="invalid-feedback">
+                        <div *ngIf="f.img.errors.required" >cin ou pass est Obligatoire</div>
+                        
+                    </div> 
+                </div>
+
+
+
+
+               
+
+
+               
+
+
+
+
+            </section>
+
+
+
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit" (click)="inscrit(preinscritform.value)">Valider</button>
+            </div>
+
+
+
+
+
+        </div>
+
+
+    </form>
+
+
+
+
+</div>

@@ -1,0 +1,40 @@
+<div class="registration-form">
+    <form  #matiereForm="ngForm" (ngSubmit)="Addmatiere()" >
+        <div class="form-icon">
+            <img src="assets/img/mat.jpg">
+        </div>
+
+        <div class="form-group">
+         
+            <select class="form-select" id="validationCustom04"   placeholder=" choisir nom Module *"  [(ngModel)]="matiere.idModule" [ngModelOptions]="{standalone:true}">
+                <option>...Select...</option>
+                <option *ngFor="let s of subjects" value="{{s._id}}" >{{s.nomModule}}</option>
+             
+            </select>
+         
+            </div>
+
+
+        <div class="form-group">
+         
+            <input type="text" class="form-control " id="username"       placeholder="Nom Matiere *"  [(ngModel)]="matiere.nomMatiere" [ngModelOptions]="{standalone:true}" >
+        </div>
+        
+      
+        <div class="form-group">
+            <input type="text" class="form-control " id="" placeholder=" Description de votre matiére " [(ngModel)]="matiere.description" [ngModelOptions]="{standalone:true}" >
+        </div>
+
+        
+        <div class="form-group">
+            <button type="submit" class="btn btn-block create-account">Ajouter Matiere</button>
+        </div>
+
+
+
+
+     
+       
+    </form>
+  
+</div>

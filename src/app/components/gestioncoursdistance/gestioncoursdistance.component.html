@@ -1,0 +1,105 @@
+<div class="content">
+
+  <div class="container">
+    <h2 class="mb-5">Gestion des Cours à distance</h2>
+
+    <div class="table-responsive">
+
+
+
+
+      <input type="text" t [(ngModel)]="searchText" placeholder="recherche">
+
+      <table class="table table-striped custom-table">
+        <thead>
+          <tr>
+
+
+            <th scope="col">Nom module</th>
+            <th scope="col">Nom matiere</th>
+            <th scope="col">Niveau</th>
+            
+            <th scope="col">Fichier</th>
+            <th scope="col">Ajouter Par enseignant </th>
+            <th scope="col">Action</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+
+
+          <tr *ngFor="let c of cours | filter:searchText ">
+
+
+            <ng-container *ngFor="let s of subjects">
+              <td class="pl-0" *ngIf="c.idModule==s._id">
+                {{s.nomModule}}
+              </td>
+
+            </ng-container>
+            <ng-container *ngFor="let m of matieres">
+              <td class="pl-0" *ngIf="c.idMatiere==m._id">
+                {{m.nomMatiere}}
+              </td>
+
+            </ng-container>
+            <td>
+              {{c.niveau}}
+            </td>
+
+
+            <td class="pl-0"><a href="{{c.img}}" [routerLink]=""  (click)="open(c.img)">{{c.img}}</a></td>
+            <ng-container *ngFor="let u of users">
+              <td class="pl-0" *ngIf="c.idEnseignant==u._id">
+                {{u.nom}} {{u.prenom}}
+
+              </td>
+
+
+            </ng-container>
+
+
+
+            <td>
+
+              <button mat-fab color="second" aria-label="Example icon button with a delete icon"
+                (click)="confirmcours(c)"  matTooltip="Confirmé le cour">
+                <mat-icon>check_circle</mat-icon>
+              </button>
+
+              <button mat-fab color="second" aria-label="Example icon button with a delete icon"
+                (click)="refuseCour(c)" matTooltip="Réfuser le cour">
+                <mat-icon>not_interested</mat-icon>
+              </button>
+
+
+              <button mat-fab color="warn" aria-label="Example icon button with a delete icon"
+                (click)="deletecour(c._id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+
+
+
+
+            </td>
+            <td class="pl-0">
+              {{c.status}}
+            </td>
+
+
+
+
+          </tr>
+
+
+
+
+
+        </tbody>
+      </table>
+    </div>
+
+
+  </div>
+
+</div>
